@@ -13,13 +13,13 @@ const userSchema = new mongoose.Schema({
         type: String, 
     },
     userId : {
-        type: mongoose.Schema.Types.ObjectId, ref:'user',
+        type: mongoose.Schema.Types.ObjectId, ref:'user', // ref name is model name
         required: true
     },
 },
 {
     timestamps : true
 })
-const posts = mongoose.model('posts', userSchema)
+const posts = mongoose.model('posts', userSchema)// model name and structure
 
 module.exports = posts

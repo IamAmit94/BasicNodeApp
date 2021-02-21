@@ -19,15 +19,22 @@ Router.put('/update_profile', authorized.verifyToken ,accountController.updatePr
 
 Router.get('/get_profile', authorized.verifyToken, accountController.Profile);
 
+
+
+
+
+
+
+
 // routes for the post
 
 Router.post('/createPost', authorized.verifyToken, accountController1.createPosts)
 
 Router.put('/update_Post/:postId',authorized.verifyToken,accountController1.updatePosts)
 
-Router.get('/allPosts', authorized.verifyToken,accountController1.allPosts) //
+Router.get('/allPosts', authorized.verifyToken,accountController1.allPosts) 
 
-Router.get('/Posts/userID',authorized.verifyToken ,accountController1.getPostByUserId)// getPostByUserId
+Router.get('/Posts/userID',authorized.verifyToken ,accountController1.getPostByUserId)
 
 
 module.exports = Router

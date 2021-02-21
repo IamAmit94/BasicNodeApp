@@ -5,28 +5,23 @@ const userSchema = new mongoose.Schema({
     userName: {
         type: String,
         unique: true,
-        required: true
     },
     email: {
         type: String,
         unique: true,
-        required: true
     },
     password: {
         type: String,
-        required: true,
-        minLength: 7
     },
     age: {
         type: Number,
-        required: false
+
     },
     token: {
         type: String
     },
     address: {
         type: Object,
-        required: false
     }
 },
     {
@@ -42,11 +37,10 @@ userSchema.statics.findByCredentials = async (email, password) => {
     }
     const isMatch = await bcrypt.compare(password, user1.password)//compare the pswd given via user and hash paswd on DB
     if (!isMatch) { // if pswd not match 
-        throw new Error('Unable to login !')
+        throw new Error('Password Incorrect !')
     }
     return user1 // if above is cond is sucesful then login
 }
-
 
 userSchema.pre('save', async function (next) { // create the middleware(pre, next)
     const user = this
@@ -55,8 +49,6 @@ userSchema.pre('save', async function (next) { // create the middleware(pre, nex
     }
     next()
 })
-
-
 
 const user = mongoose.model('user', userSchema)
 

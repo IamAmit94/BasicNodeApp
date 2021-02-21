@@ -9,7 +9,7 @@ const createToken = async (data) => {
             email: data.email,
             userName: data.userName
         }
-        const token = await jwt.sign({ data: payload}, JWT_SECRET, { expiresIn: JWT_EXP });
+const token = await jwt.sign({ data: payload},JWT_SECRET,{ expiresIn: JWT_EXP });
         return token; 
         
     } catch (error) {

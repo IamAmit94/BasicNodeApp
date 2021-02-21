@@ -55,7 +55,14 @@ const allPosts = async (req, res) => {
         }
         const postList = await postModels.find(searchQuery).select(['title', 'description']).sort({ title: -1 })
 
-        res.send(postList).json({ data: data })
+        const postList1 = await postModels.countDocuments({})
+
+        let data1 = {
+            post : postList1,
+            postData: postList
+        }
+
+        res.send(data1).json({ data: data })
     } catch (error) {
         res.status(400).json({ message: error.message })
 
@@ -65,9 +72,9 @@ const allPosts = async (req, res) => {
 // TO VIEW THE POST CREATED VIA AUTH USER
 const getPostByUserId = async (req, res) => {
     try {
-        const ID = req.params.userID
+        const ID = req.params.userid
         // console.log('The ID is ', ID)
-        const posts = await postModels.find({ userID: ID })
+        const posts = await postModels.find({ ususerID: ID })
         res.status(200).send(posts)
 
         // res.send(postList).json({ data: data })
@@ -78,7 +85,7 @@ const getPostByUserId = async (req, res) => {
 }
 
 module.exports = {
-    createPosts,
+    createPosts, 
     updatePosts,
     allPosts,
     getPostByUserId

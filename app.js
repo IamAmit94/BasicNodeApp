@@ -1,6 +1,6 @@
 const express = require('express')
 const bodyParser = require('body-parser')
-require ('dotenv').config()
+require ('dotenv').config()// to access the environment variables(.env file)
 
 
 // import module from inside
@@ -15,6 +15,6 @@ app.use(routes)
 
 
 
-app.listen(process.env.PORT || 4000, ()=> {
+app.listen(process.env.PORT || 3000, ()=> {
 console.log('Server is running on ', process.env.PORT)
 })
