@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const userSchema = new mongoose.Schema({
+const postSchema = new mongoose.Schema({
     title:{
         type: String,
         required: true, 
@@ -20,6 +20,6 @@ const userSchema = new mongoose.Schema({
 {
     timestamps : true
 })
-const posts = mongoose.model('posts', userSchema)// model name and structure
+const posts = mongoose.model('posts', postSchema)// model name and structure
 
 module.exports = posts

@@ -25,7 +25,6 @@ Router.get('/get_profile', authorized.verifyToken, accountController.Profile);
 
 
 
-
 // routes for the post
 
 Router.post('/createPost', authorized.verifyToken, accountController1.createPosts)
@@ -34,7 +33,8 @@ Router.put('/update_Post/:postId',authorized.verifyToken,accountController1.upda
 
 Router.get('/allPosts', authorized.verifyToken,accountController1.allPosts) 
 
-Router.get('/Posts/userID',authorized.verifyToken ,accountController1.getPostByUserId)
+Router.get('/Posts/:userID',authorized.verifyToken ,accountController1.getPostByUserId)
 
+Router.delete('/DeletePost/:delId',authorized.verifyToken, accountController1.deletePost)
 
 module.exports = Router

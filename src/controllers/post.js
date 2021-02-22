@@ -69,12 +69,12 @@ const allPosts = async (req, res) => {
     }
 }
 
-// TO VIEW THE POST CREATED VIA AUTH USER
+// TO VIEW ALL POST OF PARTICULAR USER VIA ID
 const getPostByUserId = async (req, res) => {
     try {
-        const ID = req.params.userid
+        const ID = req.params.userID
         // console.log('The ID is ', ID)
-        const posts = await postModels.find({ ususerID: ID })
+        const posts = await postModels.find({userId: ID})
         res.status(200).send(posts)
 
         // res.send(postList).json({ data: data })
@@ -84,9 +84,22 @@ const getPostByUserId = async (req, res) => {
     }
 }
 
+const deletePost = async (req,res) => {
+    try {
+     const id =  req.params.delId
+     const posts = await postModels.findByIdAndDelete({ _id: id})
+     res.status(200).send('Post Deleted Successfully ')
+
+    } catch (error) {
+        res.status(400).json({message: error.message})
+        
+    }
+}
+
 module.exports = {
     createPosts, 
     updatePosts,
     allPosts,
-    getPostByUserId
+    getPostByUserId,
+    deletePost
 }
